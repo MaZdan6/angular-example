@@ -5,7 +5,7 @@
     <div class='card-body'>
         <div class='row'>
             <div class='col-md-2'>Filter by: <input type='text'
-                    [(ngModel)]="listFilter">
+                       [(ngModel)]="listFilter">
             </div>
             <div class='col-md-4'>
             </div>
@@ -21,7 +21,8 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class='btn btn-primary' (click)='toogleImage()'>{{showImage ? 'Hide':'Show'}} Image
+                            <button class='btn btn-primary'
+                                    (click)='toogleImage()'>{{showImage ? 'Hide':'Show'}} Image
                             </button>
                         </th>
                         <th>Product</th>
@@ -32,16 +33,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let product of products'>
+                    <tr *ngFor='let product of filteredProducts'>
                         <td>
-                            <img *ngIf='showImage' 
-                            [src]='product.imageUrl'
+                            <img *ngIf='showImage'
+                                 [src]='product.imageUrl'
                                  [title]='product.productName'
                                  [style.width.px]='imageWidth'
                                  [style.margin.px]='imageMargin'>
-                        </td>
+                        </td>                                                                                                                                                                       
                         <td>{{product.productName}}</td>
-                        <td>{{product.productCode | lowercase}}</td>
+                        <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td>
                         <td>{{product.starRating}}</td>
